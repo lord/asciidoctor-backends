@@ -1,0 +1,11 @@
+<%#encoding:UTF-8%>
+<p><%
+if attr? :link %>
+<a <%= @id && %( id="#{@id}") %> class="image" href="<%= attr :link %>"><img src="<%= image_uri(attr :target) %>" alt="<%= attr :alt %>"<%= (attr? :width) ? %( width="#{attr :width}") : nil %><%= (attr? :height) ? %( height="#{attr :height}") : nil %>></a><%
+else %>
+<img src="<%= image_uri(attr :target) %>" alt="<%= attr :alt %>"<%= (attr? :width) ? %( width="#{attr :width}") : nil %><%= (attr? :height) ? %( height="#{attr :height}") : nil %>><%
+end %>
+</p><%
+if title? %>
+<div class="title"><%= captioned_title %></div><%
+end %>

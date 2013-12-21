@@ -1,0 +1,14 @@
+<%#encoding:UTF-8%><%
+if title? %>
+<div class="title"><%= title %></div><%
+end %>
+<ol <%= @id && %( id="#{@id}") %> class="<%= @style %>"<%= (attr? :start) ? %( start="#{attr :start}") : nil %><%= (keyword = list_marker_keyword) && %( type="#{keyword}") %>><%
+items.each do |item| %>
+<li>
+<p><%= item.text %></p><%
+  if item.blocks? %>
+<%= item.content %><%
+  end %>
+</li><%
+end %>
+</ol>

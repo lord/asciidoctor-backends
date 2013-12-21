@@ -1,0 +1,9 @@
+<%#encoding:UTF-8%><% if title? %>
+<h3><%= captioned_title %></h3><%
+end %>
+<audio src="<%= media_uri(attr :target) %>"<%
+if option? :autoplay %> autoplay<% end
+unless option? :nocontrols %> controls<% end
+if option? :loop %> loop<% end %>>
+Your browser does not support the audio tag.
+</audio>

@@ -1,0 +1,6 @@
+<%#encoding:UTF-8%><%
+slevel = @level.zero? && @special ? 1 : @level
+%>
+
+<h<%= slevel %><%= @id && %( id="#{@id}") %>><%= %(#{title}) %></h<%= slevel %>>
+<%= content %>

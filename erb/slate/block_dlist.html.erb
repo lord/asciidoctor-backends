@@ -1,0 +1,49 @@
+<%#encoding:UTF-8%><%
+case @style
+when 'qanda'
+%><%
+  if title? %>
+<div class="title"><%= title %></div><%
+  end %>
+<ol <%= @id && %( id="#{@id}") %>><%
+  items.each do |questions, answer| %>
+<li><%
+    [*questions].each do |question| %>
+<p><em><%= question.text %></em></p><%
+    end
+    unless answer.nil?
+      if answer.text? %>
+<p><%= answer.text %></p><%
+      end
+      if answer.blocks? %>
+<%= dd.content %><%
+      end
+    end %>
+</li><%
+  end %>
+</ol><%
+else
+%><% if title? %>
+<div class="title"><%= title %></div><%
+  end %>
+<dl<%= @id && %( id="#{@id}") %> class="<%= ['dlist',@style,role].compact * ' ' %>"><%
+  items.each do |terms, dd|
+    [*terms].each do |dt| %>
+<dt<%= !@style ? ' class="hdlist1"' : nil %>>
+<%= dt.text %>
+</dt><%
+    end
+    unless dd.nil? %>
+<dd><%
+      if dd.text? %>
+<p><%= dd.text %></p><%
+      end
+      if dd.blocks? %>
+<%= dd.content %><%
+      end %>
+</dd><%
+    end
+  end %>
+</dl>
+<%
+end %>

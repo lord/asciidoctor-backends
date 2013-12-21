@@ -1,0 +1,12 @@
+<%#encoding:UTF-8%><div<%= @id && %( id="#{@id}") %> class="<%= ['listingblock',role].compact * ' ' %>">
+<div class="content"><%
+nowrap = !(@document.attr? :prewrap) || (option? :nowrap)
+if @style == 'source'
+  language = attr :language
+  pre_class = [language,'highlight'] %>
+<pre<%= pre_class.empty? ? nil : %( class="#{pre_class * ' '}") %>><%= content %></pre><%
+else %>
+<pre<%= nowrap ? ' class="nowrap"' : nil %>><%= content %></pre><%
+end %>
+</div>
+</div>
